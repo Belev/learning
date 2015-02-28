@@ -6,7 +6,7 @@ class PostAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Post info', {
             'classes': ['collapse'],
-            'fields': ['title', 'created_on', 'author']
+            'fields': ['title', 'subtitle', 'created_on', 'author']
         }),
         ('Post text', {
             'classes': ['collapse'],

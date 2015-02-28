@@ -15,7 +15,8 @@ class PostAdmin(admin.ModelAdmin):
         ('Post tags', {
             'classes': ['collapse'],
             'fields': ['tags']
-        })
+        }),
+        (None, {'fields': ['image_url']})
     ]
     list_display = ['title', 'created_on', 'author']
 

@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block meta-content %}{% endblock %}
+{% block meta-author %}{% endblock %}
+
+{% block title %} Server error {% endblock %}
+{% block content %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({% static 'post/img/about-bg.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Server error</h1>
+                        <hr class="small">
+                        <span class="subheading">There is some problem with the server. Working on the problem, please come again later.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <hr>
+{% endblock %}

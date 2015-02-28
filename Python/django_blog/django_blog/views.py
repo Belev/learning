@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.contrib.sitemaps import Sitemap
+
 from post.models import Post
-# Create your views here.
 
 
 def index(request):
@@ -14,3 +15,14 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+class PostsSitemap(Sitemap):
+    changefreq = 'daily'
+    priority = 1.0
+
+    def items(self):
+        return Post.objects.all()
+
+    def lastmod(self, obj):
+        return obj.created_on

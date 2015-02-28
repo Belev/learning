@@ -3,17 +3,17 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.contrib.sitemaps.views import sitemap
 
-from django_blog.views import PostsSitemap
+from django_blog import views
 
 sitemaps = {
-    'posts': PostsSitemap
+    'posts': views.PostsSitemap
 }
 
 urlpatterns = patterns('',
 
-                       url(r'^$', 'django_blog.views.index', name='index'),
-                       url(r'^about/$', 'django_blog.views.about', name='about'),
-                       url(r'^contact/$', 'django_blog.views.contact', name='contact'),
+                       url(r'^$', views.index, name='index'),
+                       url(r'^about/$', views.about, name='about'),
+                       url(r'^contact/$', views.contact, name='contact'),
 
                        url(r'^post/', include('post.urls')),
                        url(r'^admin/', include(admin.site.urls)),
@@ -21,3 +21,6 @@ urlpatterns = patterns('',
                            "User-agent: *\nDisallow: ", content_type="text/plain")),
                        url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}),
                        )
+
+handler404 = views.custom_404
+handler500 = views.custom_500

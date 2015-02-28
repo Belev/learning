@@ -8,7 +8,6 @@ class Post(models.Model):
     title = models.CharField(max_length=150, unique=True)
     subtitle = models.CharField(max_length=150, blank=True, default=None)
     created_on = models.DateTimeField(default=timezone.now())
-    tags = models.TextField(max_length=500, blank=True, null=True)
     text = models.TextField(max_length=6000, blank=True, null=True)
     author = models.CharField(max_length=50, default='Unknown')
     image_url = models.URLField(

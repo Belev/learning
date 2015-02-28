@@ -12,6 +12,7 @@ sitemaps = {
 urlpatterns = patterns('',
 
                        url(r'^$', views.index, name='index'),
+                       url(r'^(?P<page_number>\d*)$', views.index, name='at_page'),
                        url(r'^about/$', views.about, name='about'),
                        url(r'^contact/$', views.contact, name='contact'),
 

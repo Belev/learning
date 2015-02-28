@@ -26,6 +26,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% if not posts %}
+                <p> There are no more posts to see!</p>
+                {% endif %}
+
                 {% for post in posts %}
                 <div class="post-preview">
                     <a href="{% url 'post_detail' post.id %}">
@@ -33,7 +37,7 @@
                             {{ post.title }}
                         </h2>
                         <h3 class="post-subtitle">
-                            {% if '{{ post.subtitle }}' %} {{ post.subtitle }} {% endif %}
+                            {% if post.subtitle %} {{ post.subtitle }} {% endif %}
                         </h3>
                     </a>
                     <p class="post-meta">Posted by <a href="#">{{ post.author }}</a> on {{ post.created_on }}</p>
@@ -43,7 +47,7 @@
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
+                        <a href="{% url 'at_page' next_page_number %}">Older Posts &rarr;</a>
                     </li>
                 </ul>
             </div>

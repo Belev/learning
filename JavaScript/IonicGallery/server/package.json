@@ -3,13 +3,6 @@
   "version": "0.0.1",
   "description": "Simple server using express",
   "main": "server.js",
-  "scripts": {
-    "start": "iojs server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Belev/learning/tree/master/JavaScript/IonicGallery"
-  },
   "author": "Martin Belev",
   "license": "MIT",
   "dependencies": {

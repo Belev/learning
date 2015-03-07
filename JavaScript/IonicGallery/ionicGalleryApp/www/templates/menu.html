@@ -20,10 +20,13 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item nav-clear menu-close ng-click="showLogin()">
+                <ion-item menu-close nav-clear href="#/app/home">
+                    Home
+                </ion-item>
+                <ion-item menu-close nav-clear ng-click="showLogin()">
                     Log in
                 </ion-item>
-                <ion-item nav-clear menu-close ng-click="showSignup()">
+                <ion-item menu-close nav-clear ng-click="showSignup()">
                     Sign up
                 </ion-item>
             </ion-list>
@@ -33,10 +36,8 @@
 </ion-side-menus>
 
 <!--tabs navigation panel-->
-<!--should be visible when the user is logged in (Image, Gallery)-->
+<!--should be visible when the user is logged in-->
 <ion-tabs class="tabs-icon-top tabs-positive">
-    <ion-tab title="Home" icon="ion-home" href="#/app/home"></ion-tab>
-
     <ion-tab title="Image" icon="ion-camera" href="#/app/save"></ion-tab>
 
     <ion-tab title="Gallery" icon="ion-images" href="#/app/gallery"></ion-tab>

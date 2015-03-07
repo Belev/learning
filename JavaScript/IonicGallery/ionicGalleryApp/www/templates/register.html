@@ -35,21 +35,6 @@
                     </div>
                 </div>
 
-                <label class="item item-input">
-                    <span class="input-label">Repeat Password</span>
-                    <input type="password" ng-model="registerData.repeatedPassword" name="repeatedPassword" required
-                           minlength="4" maxlength="20">
-                </label>
-
-                <div ng-messages="registerForm.repeatedPassword.$error">
-                    <div ng-message="required" class="error-message">
-                        Repeated password is required.
-                    </div>
-                    <div ng-message="minlength" class="error-message">
-                        Repeated password must be longer than 3 symbols.
-                    </div>
-                </div>
-
                 <label class="item">
                     <button class="button button-block button-positive" type="submit">Sign up</button>
                 </label>

@@ -7,20 +7,49 @@
         </div>
     </ion-header-bar>
     <ion-content>
-        <form ng-submit="doSignup()">
+        <form ng-submit="doSignup()" name="registerForm">
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">Username</span>
-                    <input type="text" ng-model="registerData.username">
+                    <input type="text" ng-model="registerData.username" name="username" required="">
                 </label>
+
+                <div ng-messages="registerForm.username.$error">
+                    <div ng-message="required" class="error-message">
+                        Username is required.
+                    </div>
+                </div>
+
                 <label class="item item-input">
                     <span class="input-label">Password</span>
-                    <input type="password" ng-model="registerData.password">
+                    <input type="password" ng-model="registerData.password" name="password" required minlength="4"
+                           maxlength="20">
                 </label>
+
+                <div ng-messages="registerForm.password.$error">
+                    <div ng-message="required" class="error-message">
+                        Password is required.
+                    </div>
+                    <div ng-message="minlength" class="error-message">
+                        Password must be longer than 3 symbols.
+                    </div>
+                </div>
+
                 <label class="item item-input">
                     <span class="input-label">Repeat Password</span>
-                    <input type="password" ng-model="registerData.repeatedPassword">
+                    <input type="password" ng-model="registerData.repeatedPassword" name="repeatedPassword" required
+                           minlength="4" maxlength="20">
                 </label>
+
+                <div ng-messages="registerForm.repeatedPassword.$error">
+                    <div ng-message="required" class="error-message">
+                        Repeated password is required.
+                    </div>
+                    <div ng-message="minlength" class="error-message">
+                        Repeated password must be longer than 3 symbols.
+                    </div>
+                </div>
+
                 <label class="item">
                     <button class="button button-block button-positive" type="submit">Sign up</button>
                 </label>

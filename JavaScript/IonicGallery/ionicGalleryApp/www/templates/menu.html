@@ -1,6 +1,6 @@
 <!--side navigation panel-->
 <ion-side-menus enable-menu-with-back-views="false">
-    <ion-side-menu-content ng-controller="MenuCtrl">
+    <ion-side-menu-content ng-controller="MenuController">
         <ion-nav-bar class="bar-stable">
             <ion-nav-back-button>
 
@@ -23,11 +23,14 @@
                 <ion-item menu-close nav-clear href="#/app/home">
                     Home
                 </ion-item>
-                <ion-item menu-close nav-clear ng-click="showLogin()">
+                <ion-item menu-close nav-clear ng-click="showLogin()" ng-show="!identity.isAuthenticated()">
                     Log in
                 </ion-item>
-                <ion-item menu-close nav-clear ng-click="showSignup()">
+                <ion-item menu-close nav-clear ng-click="showSignup()" ng-show="!identity.isAuthenticated()">
                     Sign up
+                </ion-item>
+                <ion-item menu-close nav-clear ng-click="doLogout()" ng-show="identity.isAuthenticated()">
+                    Log out
                 </ion-item>
             </ion-list>
         </ion-content>
@@ -36,9 +39,8 @@
 </ion-side-menus>
 
 <!--tabs navigation panel-->
-<!--should be visible when the user is logged in-->
-<ion-tabs class="tabs-icon-top tabs-positive">
-    <ion-tab title="Image" icon="ion-camera" href="#/app/save"></ion-tab>
+<ion-tabs class="tabs-icon-top tabs-positive" ng-show="identity.isAuthenticated()">
+    <ion-tab title="Save Image" icon="ion-camera" href="#/app/save"></ion-tab>
 
     <ion-tab title="Gallery" icon="ion-images" href="#/app/gallery"></ion-tab>
 </ion-tabs>

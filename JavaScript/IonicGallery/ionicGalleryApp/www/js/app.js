@@ -29,6 +29,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 templateUrl: "templates/menu.html",
                 controller: 'AppCtrl'
             })
+            .state('app.home', {
+                url: "/home",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/home.html"
+                    }
+                }
+            })
             .state('app.playlists', {
                 url: "/playlists",
                 views: {
@@ -38,7 +46,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     }
                 }
             })
-
             .state('app.single', {
                 url: "/playlists/:playlistId",
                 views: {

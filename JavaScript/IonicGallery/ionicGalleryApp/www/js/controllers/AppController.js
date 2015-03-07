@@ -1,62 +1,74 @@
 angular.module('starter.controllers')
-    .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
-        // Form data for the login modal
-        $scope.loginData = {};
-        $scope.registerData = {};
+    .controller('AppController', ['$scope', '$ionicModal', '$state', 'auth', 'identity',
+        function ($scope, $ionicModal, $state, auth, identity) {
+            function goToState(state) {
+                $state.go(state);
+            }
 
-        // Login modal - show, close, login
-        $ionicModal.fromTemplateUrl('templates/login.html', {
-            scope: $scope
-        }).then(function (modal) {
-            $scope.loginModal = modal;
-        });
+            $scope.identity = identity;
 
-        // Open the login modal
-        $scope.showLogin = function () {
-            $scope.loginModal.show();
-        };
+            // Form data for the login modal
+            $scope.loginData = {};
+            $scope.registerData = {};
 
-        // Triggered in the login modal to close it
-        $scope.closeLogin = function () {
-            $scope.loginModal.hide();
-        };
+            // Login modal - show, close, login
+            $ionicModal.fromTemplateUrl('templates/login.html', {
+                scope: $scope
+            }).then(function (modal) {
+                $scope.loginModal = modal;
+            });
 
-        // Perform the login action when the user submits the login form
-        $scope.doLogin = function () {
-            console.log('Doing login', $scope.loginData);
+            // Open the login modal
+            $scope.showLogin = function () {
+                $scope.loginModal.show();
+            };
 
-            // Simulate a login delay. Remove this and replace with your login
-            // code if using a login system
-            $timeout(function () {
-                $scope.closeLogin();
-            }, 1000);
-        };
+            // Triggered in the login modal to close it
+            $scope.closeLogin = function () {
+                $scope.loginModal.hide();
+            };
 
-        // Register modal
-        $ionicModal.fromTemplateUrl('templates/register.html', {
-            scope: $scope
-        }).then(function (modal) {
-            $scope.registerModal = modal;
-        });
+            // Perform the login action when the user submits the login form
+            $scope.doLogin = function () {
+                auth.login($scope.loginData)
+                    .then(function () {
+                        $scope.closeLogin();
 
-        // Open the register modal
-        $scope.showSignup = function () {
-            $scope.registerModal.show();
-        };
+                        goToState('app.gallery');
+                    });
+            };
 
-        // Triggered in the register modal to close it
-        $scope.closeSignup = function () {
-            $scope.registerModal.hide();
-        };
+            // Register modal
+            $ionicModal.fromTemplateUrl('templates/register.html', {
+                scope: $scope
+            }).then(function (modal) {
+                $scope.registerModal = modal;
+            });
 
-        // Perform the register action when the user submits the login form
-        $scope.doSignup = function () {
-            console.log('Doing signup', $scope.registerData);
+            // Open the register modal
+            $scope.showSignup = function () {
+                $scope.registerModal.show();
+            };
 
-            // Simulate a login delay. Remove this and replace with your login
-            // code if using a login system
-            $timeout(function () {
-                $scope.closeSignup();
-            }, 1000);
-        };
-    });
+            // Triggered in the register modal to close it
+            $scope.closeSignup = function () {
+                $scope.registerModal.hide();
+            };
+
+            // Perform the register action when the user submits the register form
+            $scope.doSignup = function () {
+                auth.signup($scope.registerData)
+                    .then(function () {
+                        $scope.closeSignup();
+
+                        goToState('app.gallery');
+                    });
+            };
+
+            $scope.doLogout = function () {
+                auth.logout()
+                    .then(function () {
+                        goToState('app.home');
+                    });
+            }
+        }]);

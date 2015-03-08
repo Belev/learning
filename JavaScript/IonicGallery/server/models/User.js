@@ -19,22 +19,6 @@ var userSchema = new Schema({
         type: String,
         required: 'You must fill in your password.'
     },
-    firstName: {
-        type: String,
-        default: 'Unknown',
-        trim: true
-    },
-    lastName: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    email: {
-        type: String,
-        default: '',
-        trim: true,
-        match: [/[^\s@]+@[^\s@]+\.[^\s@]+/, 'Your email is not valid. Please enter valid email address.']
-    },
     createdOn: {
         type: Date,
         default: Date.now()

@@ -24,7 +24,7 @@ module.exports = {
         var userId = req.params.userId;
         var imageSrc = req.body.imageSrc;
 
-        var saveUserImagePromise = userData.saveUserImage(userId, imageSrc)
+        var saveUserImagePromise = userData.saveUserImage(userId, imageSrc);
         handlePromiseResponse(res, saveUserImagePromise);
     }
 };

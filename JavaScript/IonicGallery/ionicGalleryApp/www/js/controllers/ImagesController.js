@@ -3,13 +3,20 @@ angular.module('starter.controllers')
         function ($scope, $cordovaCamera, $state, images, identity) {
             var currentUser = identity.getCurrentUser();
 
+            if (currentUser) {
+                images.getAllImagesForUser(currentUser.id)
+                    .then(function (userImages) {
+                        $scope.images = userImages;
+                        console.log($scope.images);
+                    });
+            }
+
             $scope.updateGalleryImages = function () {
-                if (currentUser) {
-                    images.getAllImagesForUser(currentUser.id)
-                        .then(function (userImages) {
-                            $scope.images = userImages;
-                        });
-                }
+                images.getAllImagesForUser(currentUser.id)
+                    .then(function (userImages) {
+                        $scope.images = userImages;
+                        console.log($scope.images);
+                    });
             };
 
             $scope.makeImage = function () {
@@ -42,6 +49,7 @@ angular.module('starter.controllers')
                 images.saveUserImage(currentUser.id, imageSrc)
                     .then(function () {
                         console.log('Successfully saved your image.');
+                        $scope.updateGalleryImages();
                         $state.go('app.gallery');
                     });
             };

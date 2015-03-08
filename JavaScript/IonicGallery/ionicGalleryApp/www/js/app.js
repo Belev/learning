@@ -44,7 +44,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 url: "/save",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/save.html"
+                        templateUrl: "templates/save.html",
+                        controller: "ImagesController"
                     }
                 }
             })
@@ -52,7 +53,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 url: "/gallery",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/gallery.html"
+                        templateUrl: "templates/gallery.html",
+                        controller: "ImagesController"
                     }
                 }
             });

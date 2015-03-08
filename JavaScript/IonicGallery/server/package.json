@@ -2,13 +2,12 @@
   "name": "server",
   "version": "0.0.1",
   "description": "Simple server using express",
+  "scripts": {
+    "start": "node server.js"
+  },
   "main": "server.js",
   "author": "Martin Belev",
   "license": "MIT",
-  "engines": {
-    "iojs": "1.2.x",
-    "npm": "2.5.x"
-  },
   "dependencies": {
     "body-parser": "^1.12.0",
     "cookie-parser": "^1.3.4",

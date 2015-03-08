@@ -18,7 +18,7 @@ angular.module('starter.services')
                         {
                             username: user.username,
                             password: user.hashPassword,
-                            id: user.id,
+                            id: user._id,
                             images: user.images
                         });
                 } else {

@@ -1,5 +1,12 @@
 <ion-view view-title="My Gallery">
-    <ion-content>
-       <h1> My gallery</h1>
+    <ion-content ng-show="identity.isAuthenticated()">
+        <h1>My gallery</h1>
+        <ion-list>
+            <ion-item ng-repeat="image in images">
+                <img ng-src="{{image}}" alt=""/>
+            </ion-item>
+
+            <img ng-src="./img/ionic.png" alt=""/>
+        </ion-list>
     </ion-content>
 </ion-view>

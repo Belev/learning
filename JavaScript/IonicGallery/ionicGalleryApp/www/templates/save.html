@@ -1,5 +1,9 @@
 <ion-view view-title="Save Image">
-    <ion-content>
-        <h1> Save image </h1>
+    <ion-content ng-show="identity.isAuthenticated()">
+        <h2>Choose how to upload photo: </h2>
+        <button class="button" ng-click="makeImage()">Use your camera</button>
+        <!--<input type="file" class="button" ng-click="saveImage()"/>-->
+
+        <input type="file" class="button" onchange="angular.element(this).scope().onFileChange(this)"/>
     </ion-content>
 </ion-view>

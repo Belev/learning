@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
     .controller('ImagesController', ['$scope', '$cordovaCamera', '$state', 'images', 'identity',
         function ($scope, $cordovaCamera, $state, images, identity) {
+            // TODO: fix image saving from camera and storage device!!!
             var currentUser = identity.getCurrentUser();
 
             if (currentUser) {

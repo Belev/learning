@@ -22,7 +22,7 @@ angular.module('starter.services')
                 signup: function (user) {
                     var requestOptions = {
                         method: 'POST',
-                        url: 'http://localhost:8080/auth/signup',
+                        url: 'http://ionicgalleryapi-mbelev.rhcloud.com/auth/signup',
                         data: user
                     };
 
@@ -31,7 +31,7 @@ angular.module('starter.services')
                 login: function (user) {
                     var requestOptions = {
                         method: 'POST',
-                        url: 'http://localhost:8080/auth/login',
+                        url: 'http://ionicgalleryapi-mbelev.rhcloud.com/auth/login',
                         data: user
                     };
 
@@ -40,7 +40,7 @@ angular.module('starter.services')
                 logout: function () {
                     var requestOptions = {
                         method: 'GET',
-                        url: 'http://localhost:8080/auth/logout'
+                        url: 'http://ionicgalleryapi-mbelev.rhcloud.com/auth/logout'
                     };
 
                     return makePromiseRequest(requestOptions);

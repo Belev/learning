@@ -4,7 +4,7 @@ angular.module('starter.services')
             return {
                 getAllImagesForUser: function (userId) {
                     var deferred = $q.defer();
-                    var requestUrl = 'http://localhost:8080/api/user/' + userId + '/images';
+                    var requestUrl = 'http://ionicgalleryapi-mbelev.rhcloud.com/api/user/' + userId + '/images';
 
                     $http.get(requestUrl)
                         .success(function (data, status, headers, config) {
@@ -22,7 +22,7 @@ angular.module('starter.services')
 
                     var requestOptions = {
                         method: 'POST',
-                        url: 'http://localhost:8080/api/user/' + userId + '/saveImage',
+                        url: 'http://ionicgalleryapi-mbelev.rhcloud.com/api/user/' + userId + '/saveImage',
                         data: {
                             imageSrc: imageSrc
                         }

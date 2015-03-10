@@ -14,13 +14,7 @@ angular.module('starter.services')
             },
             setCurrentUser: function (user) {
                 if (user) {
-                    $cookieStore.put(COOKIE_STORAGE_KEY,
-                        {
-                            username: user.username,
-                            password: user.hashPassword,
-                            id: user._id,
-                            images: user.images
-                        });
+                    $cookieStore.put(COOKIE_STORAGE_KEY, user);
                 } else {
                     $cookieStore.remove(COOKIE_STORAGE_KEY);
                 }

@@ -6,7 +6,9 @@ angular.module('starter.services')
 
                 $http(requestOptions)
                     .success(function (data, status, headers, config) {
-                        identity.setCurrentUser(data.user);
+                        identity.setCurrentUser({
+                            _id: data.user._id
+                        });
 
                         deferred.resolve();
                     })

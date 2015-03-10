@@ -4,9 +4,12 @@ angular.module('starter.services')
             return {
                 getAllImagesForUser: function (userId) {
                     var deferred = $q.defer();
-                    var requestUrl = 'http://ionicgalleryapi-mbelev.rhcloud.com/api/user/' + userId + '/images';
+                    var requestOptions = {
+                        method: 'GET',
+                        url: 'http://ionicgalleryapi-mbelev.rhcloud.com/api/user/' + userId + '/images'
+                    };
 
-                    $http.get(requestUrl)
+                    $http(requestOptions)
                         .success(function (data, status, headers, config) {
                             deferred.resolve(data);
                         })

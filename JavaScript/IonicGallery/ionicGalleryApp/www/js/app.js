@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngMessages', 'ngCordova'])
+angular.module('starter', ['ionic', 'angular-data.DSCacheFactory', 'starter.controllers', 'starter.services', 'ngMessages', 'ngCordova'])
 
-    .run(function ($ionicPlatform) {
+    .run(function ($ionicPlatform, DSCacheFactory) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -17,6 +17,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
+
+            DSCacheFactory('imagesCache', {storageMode: 'localStorage', maxAge: 1000000, deleteOnExpire: 'aggressive'});
         });
     })
 

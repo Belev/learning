@@ -86,5 +86,4 @@ public class EntryPoint {
 
 		session.getTransaction().commit();
 	}
-
 }

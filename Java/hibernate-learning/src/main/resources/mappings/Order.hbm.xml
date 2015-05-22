@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.hibernate.learning.models">
+
+	<class name="Order" table="orders">
+		<composite-id>
+			<key-many-to-one name="person">
+				<column name="person_first_name_fk"></column>
+				<column name="person_last_name_fk"></column>
+			</key-many-to-one>
+			
+			<key-property name="orderNumber"></key-property>
+		</composite-id>
+		
+		<property name="price"></property>
+	</class>
+
+</hibernate-mapping>

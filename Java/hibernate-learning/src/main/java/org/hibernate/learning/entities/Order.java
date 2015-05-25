@@ -1,4 +1,4 @@
-package org.hibernate.learning.models;
+package org.hibernate.learning.entities;
 
 import java.io.Serializable;
 

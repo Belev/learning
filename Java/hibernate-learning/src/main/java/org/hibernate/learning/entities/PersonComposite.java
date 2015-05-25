@@ -1,6 +1,6 @@
-package org.hibernate.learning.models;
+package org.hibernate.learning.entities;
 
-import org.hibernate.learning.models.compositeKeys.PersonId;
+import org.hibernate.learning.entities.compositeKeys.PersonId;
 
 public class PersonComposite {
 	private PersonId personId;

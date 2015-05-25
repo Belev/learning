@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.learning.models.Event;
-import org.hibernate.learning.models.Person;
+import org.hibernate.learning.entities.Event;
+import org.hibernate.learning.entities.Person;
 import org.hibernate.learning.util.HibernateUtil;
 
 public class EntryPoint {

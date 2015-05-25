@@ -1,4 +1,4 @@
-package org.hibernate.learning.models.compositeKeys;
+package org.hibernate.learning.entities.compositeKeys;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package org.hibernate.learning.util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -27,5 +28,12 @@ public class HibernateUtil {
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
-
+	
+	public static void closeSessionFactory() {
+		sessionFactory.close();
+	}
+	
+	public static Session getCurrentSession() {
+		return getSessionFactory().getCurrentSession();
+	}
 }

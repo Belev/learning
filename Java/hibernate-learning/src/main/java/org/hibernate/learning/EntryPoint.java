@@ -11,22 +11,26 @@ import org.hibernate.learning.util.HibernateUtil;
 public class EntryPoint {
 
 	public static void main(String[] args) {
+		// person and event tests
 		// Long eventId = createAndStoreEvent("Second event", new Date());
 		// Long personId = createAndStorePerson("Petar", "Dimitrov");
 		// addPersonToEvent(personId, eventId);
-		 addEmailToPerson(1L, "belev@gmail.com");
-		
-		
-		HibernateUtil.getSessionFactory().close();
+		// addEmailToPerson(1L, "belev@gmail.com");
+
+		// update test
+		// Long eventId = getFirstEventIdFromList();
+		// updateEvent(eventId);
+
+		HibernateUtil.closeSessionFactory();
 	}
 
-	private static Long createAndStoreEvent(String title, Date theDate) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	private static Long createAndStoreEvent(String title, Date date) {
+		Session session = HibernateUtil.getCurrentSession();
 		session.beginTransaction();
 
 		Event event = new Event();
 		event.setTitle(title);
-		event.setDate(theDate);
+		event.setDate(date);
 		session.save(event);
 
 		session.getTransaction().commit();
@@ -34,8 +38,40 @@ public class EntryPoint {
 		return event.getId();
 	}
 
+	private static List<Event> getAllEvents() {
+		Session session = HibernateUtil.getCurrentSession();
+		session.beginTransaction();
+
+		List<Event> events = session.createQuery("from Event").list();
+
+		session.getTransaction().commit();
+
+		return events;
+	}
+
+	private static Long getFirstEventIdFromList() {
+		return getAllEvents().get(0).getId();
+	}
+
+	private static void printEvents(List<Event> events) {
+		for (Event event : events) {
+			System.out.println("Event: " + event.getTitle() + " Time: "
+					+ event.getDate());
+		}
+	}
+
+	private static void updateEvent(Long eventId) {
+		Session session = HibernateUtil.getCurrentSession();
+		session.beginTransaction();
+		
+		Event event = (Event) session.load(Event.class, eventId);
+
+		event.setTitle("My updated test event.");
+		session.getTransaction().commit();
+	}
+
 	private static Long createAndStorePerson(String firstName, String lastName) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getCurrentSession();
 		session.beginTransaction();
 
 		Person person = new Person();
@@ -48,26 +84,8 @@ public class EntryPoint {
 		return person.getId();
 	}
 
-	private static List<Event> getAllEvents() {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-
-		List<Event> events = session.createQuery("from Event").list();
-
-		session.getTransaction().commit();
-
-		return events;
-	}
-
-	private static void printEvents(List<Event> events) {
-		for (Event event : events) {
-			System.out.println("Event: " + event.getTitle() + " Time: "
-					+ event.getDate());
-		}
-	}
-
 	private static void addPersonToEvent(Long personId, Long eventId) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getCurrentSession();
 		session.beginTransaction();
 
 		Person person = (Person) session.load(Person.class, personId);
@@ -78,7 +96,7 @@ public class EntryPoint {
 	}
 
 	private static void addEmailToPerson(Long personId, String emailAddress) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getCurrentSession();
 		session.beginTransaction();
 
 		Person person = (Person) session.load(Person.class, personId);

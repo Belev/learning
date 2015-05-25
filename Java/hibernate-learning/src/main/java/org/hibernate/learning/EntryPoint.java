@@ -1,11 +1,15 @@
 package org.hibernate.learning;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.learning.entities.Event;
 import org.hibernate.learning.entities.Person;
+import org.hibernate.learning.entities.inheritance.Employee;
+import org.hibernate.learning.entities.inheritance.PerHourEmployee;
+import org.hibernate.learning.entities.inheritance.RegularEmployee;
 import org.hibernate.learning.util.HibernateUtil;
 
 public class EntryPoint {
@@ -20,8 +24,12 @@ public class EntryPoint {
 		// update test
 		// Long eventId = getFirstEventIdFromList();
 		// updateEvent(eventId);
+		
+		// inheritance test
+		// Long[] employeeIds = createAndStoreEmployees();
 
 		HibernateUtil.closeSessionFactory();
+		System.out.println("Ended successfully.");
 	}
 
 	private static Long createAndStoreEvent(String title, Date date) {
@@ -103,5 +111,34 @@ public class EntryPoint {
 		person.getEmailAddresses().add(emailAddress);
 
 		session.getTransaction().commit();
+	}
+	
+	private static Long[] createAndStoreEmployees() {
+		Session session = HibernateUtil.getCurrentSession();
+		session.beginTransaction();
+		
+		List<Long> employeeIds = new ArrayList<Long>();
+		
+		Employee employee = new Employee();
+		employee.setName("Employee");
+		session.save(employee);
+		
+		RegularEmployee regularEmployee = new RegularEmployee();
+		regularEmployee.setName("Regular employee");
+		regularEmployee.setSalary(876.5);
+		session.save(regularEmployee);
+		
+		PerHourEmployee perHourEmployee = new PerHourEmployee();
+		perHourEmployee.setName("Per hour employee");
+		perHourEmployee.setHourPayPrice(15.9);
+		session.save(perHourEmployee);
+		
+		session.getTransaction().commit();
+		
+		employeeIds.add(employee.getId());
+		employeeIds.add(regularEmployee.getId());
+		employeeIds.add(perHourEmployee.getId());
+		
+		return (Long[]) employeeIds.toArray();
 	}
 }

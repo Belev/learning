@@ -28,7 +28,7 @@
 
 		<mapping resource="mappings/Event.hbm.xml" />
 		<mapping resource="mappings/Person.hbm.xml" />
-		<mapping resource="mappings/PersonCompositeKey.hbm.xml" />
+		<mapping resource="mappings/PersonComposite.hbm.xml" />
 		<mapping resource="mappings/Order.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

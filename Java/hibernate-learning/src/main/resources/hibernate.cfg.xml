@@ -26,9 +26,18 @@
 
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
+		<!-- Simple many-to-many mappings -->
 		<mapping resource="mappings/Event.hbm.xml" />
 		<mapping resource="mappings/Person.hbm.xml" />
+		
+		<!-- Embeddable composite id mappings -->
 		<mapping resource="mappings/PersonComposite.hbm.xml" />
 		<mapping resource="mappings/Order.hbm.xml"/>
+		
+		<!-- Inheritance mappings -->
+		<!-- <mapping resource="mappings/inheritance/EmployeeTablePerHierarchy.hbm.xml"/>  -->
+		<!-- <mapping resource="mappings/inheritance/EmployeeTablePerClassImplPoly.hbm.xml"/>  -->
+		<!-- <mapping resource="mappings/inheritance/EmployeeTablePerClassUnion.hbm.xml"/> -->
+		<mapping resource="mappings/inheritance/EmployeeTablePerSubclass.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

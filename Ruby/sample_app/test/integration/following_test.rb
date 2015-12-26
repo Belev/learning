@@ -3,6 +3,7 @@ require 'test_helper'
 class FollowingTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:user)
+    @user2 = users(:user2)
 
     setup_follow_users
 
@@ -27,12 +28,26 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should follow user" do
+    assert_difference '@user.following.count', 1 do
+      post relationships_path, followed_id: @user2.id
+    end
+  end
+
+  test "should unfollow user" do
+    @user.follow(@user2)
+    relationship = @user.active_relationships.find_by(followed_id: @user2.id)
+    assert_difference '@user.following.count', -1 do
+      delete relationship_path(relationship)
+    end
+  end
+
   private
 
   def setup_follow_users
-    [ users(:user2), users(:user3) ].each do |user|
-      @user.follow(user)
-      user.follow(@user)
-    end
+    user3 = users(:user3)
+
+    @user.follow(user3)
+    user3.follow(@user)
   end
 end

@@ -59,11 +59,13 @@ target/
 node_modules/
 # WebStorm
 .idea/
+*.iml
 # Log files
 .log
 
 # Java ignore files
 *.class
+/out/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

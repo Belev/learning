@@ -1,0 +1,21 @@
+{
+  "name": "who-to-follow-github",
+  "homepage": "https://github.com/Belev/learning",
+  "authors": [
+    "Martin Belev <martinbelev93@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "rxjs": "^4.1.0",
+    "jquery": "^3.0.0"
+  }
+}

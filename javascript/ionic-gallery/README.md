@@ -11,6 +11,10 @@ Simple gallery app for managing your pictures. Built with MEAN stack with Ionic 
  - **api/user/:userId/images** - Gets all images for given user
  - **api/user/:userId/saveImage** - Saves image to user's gallery
 
+- API additional information
+ - Database is deployed on MongoLab
+ - The API is deployed on Open Shift. Url: http://ionicgalleryapi-mbelev.rhcloud.com/
+
 ## TODO
 - Add unit tests
 

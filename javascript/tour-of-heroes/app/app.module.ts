@@ -1,3 +1,4 @@
+import './rxjs-extensions';
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
@@ -10,6 +11,8 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {HttpModule} from "@angular/http";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./services/in-memory-data.service";
+import {SearchHeroService} from "./services/search-hero.service";
+import {SearchHeroComponent} from "./hero/search-hero.component";
 
 @NgModule({
   imports: [
@@ -23,10 +26,12 @@ import {InMemoryDataService} from "./services/in-memory-data.service";
     AppComponent,
     DashboardComponent,
     HeroDetailsComponent,
-    HeroesComponent
+    HeroesComponent,
+    SearchHeroComponent
   ],
   providers: [
-    HeroService
+    HeroService,
+    SearchHeroService
   ],
   bootstrap: [
     AppComponent

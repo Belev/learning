@@ -19,3 +19,8 @@ test:
   database: sample_app_test
   username: root
   password: test
+
+production:
+  adapter: pg
+  database: micro_twitter_app
+  encoding: utf8

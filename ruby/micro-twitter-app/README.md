@@ -1,6 +1,8 @@
 # Simple micro twitter app
 Building the app while reading Learn web Development with Rails(3rd Edition) - [Link to the book](https://www.railstutorial.org/book)
 
+Run the [live example](https://micro-twitter-app.herokuapp.com/)
+
 ## To run the application:
 - clone the repository and go to sample_app directory
 - execute: bundle install

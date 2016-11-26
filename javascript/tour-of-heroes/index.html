@@ -7,22 +7,27 @@
 
   <base href="/">
 
-  <link rel="stylesheet" href="styles.css">
+  <!-- build:css -->
+  <link rel="stylesheet" href="./app/styles/styles.css">
+  <!-- endbuild -->
+</head>
+<body>
+  <app>Loading...</app>
 
-  <!-- 1. Load libraries -->
-  <!-- Polyfill(s) for older browsers -->
+  <!-- build:polyfills -->
   <script src="node_modules/core-js/client/shim.min.js"></script>
+
   <script src="node_modules/zone.js/dist/zone.js"></script>
   <script src="node_modules/reflect-metadata/Reflect.js"></script>
   <script src="node_modules/systemjs/dist/system.src.js"></script>
-  <!-- 2. Configure SystemJS -->
+  <!-- endbuild -->
+
+  <!-- build:app -->
   <script src="systemjs.config.js"></script>
   <script>
-    SystemJS.import('app').catch(function(err){ console.error(err); });
+    SystemJS.import('app')
+      .then(null, console.error.bind(console));
   </script>
-</head>
-<!-- 3. Display the application -->
-<body>
-<app>Loading...</app>
+  <!-- endbuild -->
 </body>
 </html>

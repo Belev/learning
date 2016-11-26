@@ -20,14 +20,14 @@ button {
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-}
 
-button:hover {
-  background-color: #cfd8dc;
-}
+  &:hover {
+    background-color: #cfd8dc;
+  }
 
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
+  &:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
 }
